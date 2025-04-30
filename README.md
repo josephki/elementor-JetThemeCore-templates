@@ -1,96 +1,129 @@
-# Elementor JetThemeCore Manager
+# Elementor JetThemeCore Fix
 
 ## Beschreibung
 
-Elementor JetThemeCore Manager ist ein WordPress-Plugin, das Ihnen ermöglicht, bei Elementor-Templates zu entscheiden, ob sie von Crocoblock JetThemeCore verwaltet werden sollen oder nicht. Dies löst Kompatibilitätsprobleme zwischen Elementor-Templates und JetThemeCore.
+Elementor JetThemeCore Fix behebt Konflikte zwischen Elementor und JetThemeCore (Crocoblock), die verhindern, dass Templates normal in Elementor bearbeitet werden können. Es löst insbesondere das Problem "Auf der Seite wurde kein Inhaltsbereich gefunden" im abgesicherten Modus und stellt sicher, dass Templates trotz aktiviertem JetThemeCore bearbeitet werden können.
 
-Das Plugin fügt eine einfache Checkbox zu Elementor-Templates und anderen unterstützten Post-Types hinzu, mit der Sie einzelne Templates von der JetThemeCore-Verwaltung ausschließen können.
+![JetThemeCore Status in der Template-Liste](https://example.com/screenshot.png)
 
 ## Hauptfunktionen
 
-- Checkbox zum Ausschließen einzelner Templates von JetThemeCore
-- Unterstützung für Elementor-Templates, Sektionen, Seiten und Beiträge
-- Kompatibilität mit benutzerdefinierten Post-Types, die Elementor unterstützen
-- Einfache Benutzeroberfläche im WordPress-Backend
-- Leichtgewichtig und performant
+- **Konfliktlösung**: Beseitigt Konflikte zwischen Elementor und JetThemeCore
+- **Template-Steuerung**: Ermöglicht das selektive Deaktivieren von JetThemeCore für bestimmte Templates
+- **Listenansicht-Integration**: Zeigt JetThemeCore-Status in der Template-Liste an
+- **Massenaktionen**: Ermöglicht das gleichzeitige Aktivieren/Deaktivieren für mehrere Templates
+- **Filterung**: Filtert Templates nach JetThemeCore-Status
+- **Editor-Fix**: Behebt das "Kein Inhaltsbereich gefunden"-Problem im Elementor-Editor
 
 ## Installation
 
-### Als Plugin (empfohlen)
+### Automatische Installation
+1. Gehen Sie in Ihrem WordPress-Dashboard zu **Plugins > Installieren**
+2. Klicken Sie auf **Plugin hochladen**
+3. Wählen Sie die Zip-Datei aus und klicken Sie auf **Jetzt installieren**
+4. Aktivieren Sie das Plugin
 
-1. **Manuell über FTP**
-   - Laden Sie den Ordner `elementor-jetthemecore-manager` in das Verzeichnis `/wp-content/plugins/` Ihrer WordPress-Installation hoch
-   - Aktivieren Sie das Plugin über den Menüpunkt "Plugins" in WordPress
-
-2. **Über WordPress-Administrationsoberfläche**
-   - Laden Sie die ZIP-Datei des Plugins herunter
-   - Gehen Sie zu "Plugins" > "Installieren" > "Plugin hochladen"
-   - Wählen Sie die ZIP-Datei aus und klicken Sie auf "Jetzt installieren"
-   - Aktivieren Sie das Plugin
-
-### Als Snippet (Alternative)
-
-1. Öffnen Sie die `functions.php` Ihres aktiven Child-Themes
-2. Fügen Sie den Snippet-Code am Ende der Datei ein
-3. Speichern Sie die Datei
-
-**Hinweis:** Die Verwendung als Snippet wird nur empfohlen, wenn Sie ein Child-Theme verwenden, da Änderungen bei Theme-Updates verloren gehen können.
-
-## Voraussetzungen
-
-- WordPress 5.0 oder höher
-- Elementor (kostenlos oder Pro)
-- JetThemeCore von Crocoblock
+### Manuelle Installation
+1. Laden Sie das Plugin herunter und entpacken Sie es
+2. Laden Sie den Ordner `elementor-jetthemecore-fix` in das Verzeichnis `/wp-content/plugins/` hoch
+3. Aktivieren Sie das Plugin über den Menüpunkt **Plugins** in WordPress
 
 ## Verwendung
 
-1. Installieren und aktivieren Sie das Plugin
-2. Bearbeiten Sie ein Elementor-Template oder eine Seite
-3. Suchen Sie im rechten Bereich nach der Box "JetThemeCore Verwaltung"
-4. Aktivieren Sie die Option "Von JetThemeCore ausschließen", wenn das Template nicht von JetThemeCore verwaltet werden soll
-5. Speichern Sie das Template
+### JetThemeCore für ein einzelnes Template deaktivieren
+
+1. Öffnen Sie ein Template oder eine Seite im WordPress-Editor
+2. Suchen Sie in der rechten Seitenleiste nach der Box **JetThemeCore für Elementor deaktivieren**
+3. Aktivieren Sie die Checkbox
+4. Klicken Sie auf **Aktualisieren** oder **Veröffentlichen**
+
+### JetThemeCore-Status in der Template-Liste verwalten
+
+1. Gehen Sie zu **Templates > Gespeicherte Templates**
+2. In der Spalte **JetThemeCore Status** sehen Sie den aktuellen Status jedes Templates
+3. Klicken Sie auf den **JetThemeCore deaktivieren**-Button, um den Status direkt zu ändern
+
+### Templates nach JetThemeCore-Status filtern
+
+1. Gehen Sie zu **Templates > Gespeicherte Templates**
+2. Verwenden Sie das Dropdown **JetThemeCore Status filtern**
+3. Wählen Sie **JetThemeCore deaktiviert** oder **JetThemeCore aktiv**
+4. Klicken Sie auf **Filter anwenden**
+
+### Massenaktionen verwenden
+
+1. Wählen Sie mehrere Templates durch Anklicken der Checkboxen aus
+2. Wählen Sie **JetThemeCore deaktivieren** oder **JetThemeCore aktivieren** aus dem Dropdown **Bulk-Aktionen**
+3. Klicken Sie auf **Anwenden**
+
+### Frontend-Bearbeitung
+
+Auf der Frontend-Seite finden Sie in der Admin-Symbolleiste einen neuen Button **Mit Elementor bearbeiten (Fix)**, der eine spezielle URL verwendet, um JetThemeCore-Konflikte zu vermeiden.
 
 ## Häufig gestellte Fragen
 
-### Warum sollte ich bestimmte Templates von JetThemeCore ausschließen?
+### Warum erscheint die Meldung "Auf der Seite wurde kein Inhaltsbereich gefunden"?
+Diese Meldung erscheint, wenn JetThemeCore mit der normalen Funktionsweise von Elementor in Konflikt gerät. Unser Plugin behebt dieses Problem, indem es die problematischen Hooks und Filter deaktiviert.
 
-In manchen Fällen kann JetThemeCore die normale Funktionalität von Elementor-Templates beeinträchtigen. Dieses Plugin ermöglicht es Ihnen, selektiv zu entscheiden, welche Templates von JetThemeCore verwaltet werden sollen und welche nicht.
+### Werden durch die Deaktivierung von JetThemeCore für ein Template andere Funktionen beeinträchtigt?
+Nein, die Deaktivierung gilt nur für die Interaktion zwischen JetThemeCore und dem spezifischen Template. Andere Funktionen von JetThemeCore bleiben erhalten.
 
-### Funktioniert das Plugin mit benutzerdefinierten Post-Types?
+### Funktioniert das Plugin mit allen Versionen von Elementor und JetThemeCore?
+Das Plugin wurde mit den neuesten Versionen von Elementor und JetThemeCore getestet. Es sollte mit den meisten Versionen kompatibel sein, aber bei sehr alten Versionen können Probleme auftreten.
 
-Ja, das Plugin unterstützt standardmäßig Elementor-Templates, Sektionen, Seiten und Beiträge sowie alle benutzerdefinierten Post-Types, die Elementor-Unterstützung deklariert haben.
-
-### Was passiert, wenn ich JetThemeCore oder Elementor deaktiviere?
-
-Das Plugin prüft, ob beide Plugins aktiv sind. Falls eines oder beide deaktiviert werden, wird eine Benachrichtigung angezeigt, aber keine Funktionalität ist beeinträchtigt. Sie können das Plugin problemlos wieder aktivieren, sobald Elementor und JetThemeCore aktiv sind.
+### Kann ich JetThemeCore für alle Templates auf einmal deaktivieren?
+Ja, gehen Sie zu **Templates > Gespeicherte Templates**, wählen Sie alle Templates aus und verwenden Sie die Bulk-Aktion **JetThemeCore deaktivieren**.
 
 ## Fehlerbehebung
 
-### Die Checkbox erscheint nicht
+### Das Template lässt sich immer noch nicht bearbeiten
+1. Stellen Sie sicher, dass Sie die Option **JetThemeCore für Elementor deaktivieren** aktiviert haben
+2. Leeren Sie den Cache Ihres Browsers und von WordPress
+3. Versuchen Sie, den Button **Mit Elementor bearbeiten (Fix)** aus der Admin-Symbolleiste zu verwenden
 
-- Stellen Sie sicher, dass Elementor und JetThemeCore aktiv sind
-- Prüfen Sie, ob Sie den richtigen Post-Type bearbeiten (Elementor-Template, Seite, Beitrag etc.)
-- Schauen Sie im rechten Metabox-Bereich nach der Box "JetThemeCore Verwaltung"
+### Der JetThemeCore-Status ändert sich nicht
+1. Prüfen Sie, ob Sie über ausreichende Berechtigungen verfügen (Administrator-Rechte)
+2. Deaktivieren und reaktivieren Sie das Plugin
+3. Prüfen Sie, ob andere Plugins mit der Metabox interferieren
 
-### Ausgeschlossene Templates werden trotzdem von JetThemeCore verwaltet
+## Systemanforderungen
 
-- Stellen Sie sicher, dass Sie das Template nach dem Aktivieren der Checkbox gespeichert haben
-- Leeren Sie den Cache Ihres Browsers und von WordPress
-- Prüfen Sie, ob JetThemeCore auf die neueste Version aktualisiert ist
+- WordPress 5.0 oder höher
+- Elementor (Free oder Pro)
+- JetThemeCore (Teil von Crocoblock)
 
-## Lizenz
+## Entwickler
 
-GPL v2 oder später
+### Hooks und Filter
 
-## Autor
+Das Plugin bietet folgende Hooks für Entwickler:
 
-[Ihr Name]
+- `elementor_jetthemecore_fix/disable_hooks` - Filter zum Anpassen der zu deaktivierenden Hooks
+- `elementor_jetthemecore_fix/post_types` - Filter zum Ändern der unterstützten Post-Types
 
-## Unterstützung
+### Beispiel: Benutzerdefinierte Post-Types hinzufügen
 
-Bei Fragen oder Problemen erstellen Sie bitte ein Issue auf GitHub oder kontaktieren Sie den Autor direkt.
+```php
+add_filter('elementor_jetthemecore_fix/post_types', function($post_types) {
+    $post_types[] = 'product'; // WooCommerce-Produkte hinzufügen
+    return $post_types;
+});
+```
+
+## Mitmachen und Beitragen
+
+Wir freuen uns über Beiträge zum Plugin! Besuchen Sie unser [GitHub-Repository](https://github.com/your-username/elementor-jetthemecore-fix), um:
+
+- Fehler zu melden
+- Funktionen vorzuschlagen
+- Pull Requests einzureichen
 
 ## Änderungsprotokoll
 
 ### 1.0.0
 - Erstveröffentlichung
+- Konfliktlösung zwischen Elementor und JetThemeCore
+- Implementierung der Template-Steuerung
+- Integration in die Template-Listenansicht
+- Unterstützung für Massenaktionen
+- Frontend-Bearbeitungsfix
